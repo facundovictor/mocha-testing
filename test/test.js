@@ -19,6 +19,22 @@ describe('Array', function() {
       assert.equal(-1, [1,2,3].indexOf(5));
       assert.equal(-1, [1,2,3].indexOf(0));
     });
+
+    context('when not present', function() {
+      it('should not throw an error', function() {
+        (function() {
+          [1,2,3].indexOf(4);
+        }).should.not.throw();
+      });
+      it('should return -1', function() {
+        [1,2,3].indexOf(4).should.equal(-1);
+      });
+    });
+    context('when present', function() {
+      it('should return the index where the element first appears in the array', function() {
+        [1,2,3].indexOf(3).should.equal(2);
+      });
+    });
   });
 });
 
@@ -52,4 +68,4 @@ describe('a suite of tests', function() {
   it('should take less than 500ms as well', function(done){
     setTimeout(done, 200);
   });
-})
+});
