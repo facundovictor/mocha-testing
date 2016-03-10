@@ -8,3 +8,7 @@ A repository for testing MochaJS, chai and chai-as-promises.
 2- npm install -g mocha
 
 3- npm install (for installing package devDependencies)
+
+# To run the tests
+
+Just type **mocha**
