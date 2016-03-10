@@ -23,5 +23,11 @@
   "bugs": {
     "url": "https://github.com/facundovictor/mocha-testing/issues"
   },
-  "homepage": "https://github.com/facundovictor/mocha-testing#readme"
+  "homepage": "https://github.com/facundovictor/mocha-testing#readme",
+  "devDependencies": {
+    "chai": "^3.4.1",
+    "chai-as-promised": "^5.1.0",
+    "mocha": "^2.3.4",
+    "mocha-junit-reporter": "^1.9.1"
+  }
 }
