@@ -31,6 +31,8 @@ describe('add()', function() {
   {args: [1, 2, 3, 4], expected: 10}
   ];
 
+  this.slow(10);
+
   tests.forEach(function(test) {
     it('correctly adds ' + test.args.length + ' args', function() {
       var res = add.apply(null, test.args);
@@ -38,3 +40,16 @@ describe('add()', function() {
     });
   });
 });
+
+
+describe('a suite of tests', function() {
+  this.timeout(500);
+
+  it('should take less than 500ms', function(done){
+    setTimeout(done, 300);
+  });
+
+  it('should take less than 500ms as well', function(done){
+    setTimeout(done, 200);
+  });
+})
