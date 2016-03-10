@@ -1,0 +1,27 @@
+{
+  "name": "mocha-testing",
+  "version": "1.0.0",
+  "description": "Just learning to use mocha",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/facundovictor/mocha-testing.git"
+  },
+  "keywords": [
+    "mocha",
+    "BDD",
+    "JS"
+  ],
+  "author": "Facundo Victor",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/facundovictor/mocha-testing/issues"
+  },
+  "homepage": "https://github.com/facundovictor/mocha-testing#readme"
+}
