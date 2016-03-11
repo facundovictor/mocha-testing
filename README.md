@@ -1,7 +1,7 @@
 # mocha-testing
 A repository for testing MochaJS, chai and chai-as-promises.
 
-# Deploy
+## Deploy
 
 1- git clone git@github.com:facundovictor/mocha-testing.git
 
@@ -9,6 +9,6 @@ A repository for testing MochaJS, chai and chai-as-promises.
 
 3- npm install (for installing package devDependencies)
 
-# To run the tests
+## To run the tests
 
 Just type **mocha**
