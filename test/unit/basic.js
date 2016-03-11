@@ -2,7 +2,6 @@ var assert = require('assert');
 var chai = require("chai");
 var chaiAsPromised = require("chai-as-promised");
 
-
 function add() {
   return Array.prototype.slice.call(arguments).reduce(function(prev, curr) {
     return prev + curr;
