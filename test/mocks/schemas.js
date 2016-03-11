@@ -5,7 +5,7 @@ var schema = {
       type: 'object',
       properties: {
         id: {
-          $ref: '#/definitions/positiveInt'
+          type: 'integer'
         },
         name: {
           type: 'string',
