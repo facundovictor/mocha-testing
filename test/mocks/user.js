@@ -26,6 +26,4 @@ var schema = {
   ]
 };
 
-module.exports = {
-  obj: schema
-};
+module.exports = schema;
