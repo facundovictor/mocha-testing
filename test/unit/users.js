@@ -9,6 +9,17 @@ describe('Users', function() {
         some_guy.userId.should.be.ok();
         some_guy.userId.should.be.String();
       });
+
+      it('Should have a name', function() {
+        some_guy.should.have.property('name'); 
+        some_guy.name.should.be.ok();
+        some_guy.name.should.be.String();
+      });
+
+      it('Shold have a email', function(){
+        some_guy.should.have.property('emailAddr'); 
+        some_guy.emailAddr.should.be.ok();
+        some_guy.emailAddr.should.be.String();
       });
     });
   });
