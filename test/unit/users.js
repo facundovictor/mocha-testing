@@ -21,6 +21,14 @@ describe('Users', function() {
         some_guy.emailAddr.should.be.ok();
         some_guy.emailAddr.should.be.String();
       });
+
+      it('The name would be Facu, Robert, or Cesar.', function() {
+        some_guy.name.should.match(/^Facu$|^Robert$|^Cesar$/);
+      });
+
+      it('The email address should be from the expected domain', function(){
+        some_guy.emailAddr.should.containEql("altoros.com");
+      });
     });
   });
 });
