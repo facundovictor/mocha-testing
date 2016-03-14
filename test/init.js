@@ -3,6 +3,7 @@ global.chai = require("chai");
 global.chaiAsPromised = require("chai-as-promised");
 global.jsf = require('json-schema-faker');
 global.should = require('should');
+global.sinon = require('sinon');
 
 // Load schemas
 global.mocks = require('./mocks');
