@@ -28,6 +28,7 @@ describe('Users', function() {
 
       it('The email address should be from the expected domain', function(){
         some_guy.emailAddr.should.containEql("altoros.com");
+        some_guy.emailAddr.should.match(/@altoros.com$/);
       });
     });
   });
