@@ -1,7 +1,7 @@
 var schema = {
   type: "object",
   properties: {
-    userId: {
+    user_id: {
       type: "string",
       chance: "guid"
     },
@@ -9,7 +9,7 @@ var schema = {
       type: "string",
       pattern: "Robert|Cesar|Facu"
     },
-    emailAddr: {
+    email_addr: {
       type: "string",
       chance: {
         email: {
@@ -20,9 +20,9 @@ var schema = {
     }
   },
   required: [
-    "userId",
+    "user_id",
     "name",
-    "emailAddr"
+    "email_addr"
   ]
 };
 

@@ -8,7 +8,6 @@ describe('Users', function() {
     model = {};
 
     ctrl = {
-      amountOfUsers : 0,
       current_user : model,
       editName : function(name){
         return current_user.save(name);
@@ -18,9 +17,9 @@ describe('Users', function() {
 
   context('When creating a new user', function() {
     it('Should have an id', function() {
-      some_guy.should.have.property('userId');
-      some_guy.userId.should.be.ok();
-      some_guy.userId.should.be.String();
+      some_guy.should.have.property('user_id');
+      some_guy.user_id.should.be.ok();
+      some_guy.user_id.should.be.String();
     });
 
     it('Should have a name', function() {
@@ -30,9 +29,9 @@ describe('Users', function() {
     });
 
     it('Shold have an email', function(){
-      some_guy.should.have.property('emailAddr');
-      some_guy.emailAddr.should.be.ok();
-      some_guy.emailAddr.should.be.String();
+      some_guy.should.have.property('email_addr');
+      some_guy.email_addr.should.be.ok();
+      some_guy.email_addr.should.be.String();
     });
 
     it('The name would be Facu, Robert, or Cesar.', function() {
@@ -40,8 +39,8 @@ describe('Users', function() {
     });
 
     it('The email address should be from the expected domain', function(){
-      some_guy.emailAddr.should.containEql("altoros.com");
-      some_guy.emailAddr.should.match(/@altoros.com$/);
+      some_guy.email_addr.should.containEql("altoros.com");
+      some_guy.email_addr.should.match(/@altoros.com$/);
     });
   });
 
@@ -54,10 +53,8 @@ describe('Users', function() {
     });
 
     it("and this is just for playing", function () {
-
       // console.log(missionImpossible.assignment("accept", tape));
       // missionImpossible.assignment("reject", tape);
-
     });
   });
 });
