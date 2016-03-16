@@ -13,8 +13,16 @@ describe('Users', function() {
         return this.current_user;
       },
       editName : function(name){
-        this.current_user.name = name;
-        return this.current_user.save();
+        var old_name = this.current_user.name;
+        try {
+          this.current_user.name = name;
+          return this.current_user.save();
+        }
+        catch (e) {
+          this.current_user.name = old_name;
+        }
+        return this.current_user;
+      }
       }
     };
   });
@@ -63,6 +71,7 @@ describe('Users', function() {
     beforeEach(function(){
       user['save'] = sandbox.stub();
       user.save.withArgs().returns(user);
+      // user.save.withArgs(sinon.match.any).throws("database_error");
     });
 
     it("The new name will be persisted", function () {
@@ -74,13 +83,13 @@ describe('Users', function() {
     });
 
     it("On database error, catch and not persist", function () {
-      user.save.withArgs(sinon.match.any).throws("database_error");
+      user.save.withArgs().throws("database_error");
       var new_name = "RUPERT";
-      var current_name = ctrl.current_user.name;
+      var old_name = ctrl.current_user.name;
       var edited_user = ctrl.editName(new_name);
       edited_user.should.have.property('name');
       edited_user.name.should.be.String();
-      edited_user.name.should.be.eql(ctrl.current_user.name);
+      edited_user.name.should.be.eql(old_name);
     });
   });
 });
