@@ -1,58 +1,59 @@
 describe('Users', function() {
 
-  var some_guy, model, ctrl;
+  var user, model, ctrl;
 
   beforeEach(function(){
     sandbox = sinon.sandbox.create();
-    some_guy = jsf(mocks.user);
-    model = {};
+    user = jsf(mocks.user);
 
     ctrl = {
-      current_user : model,
+      current_user : user,
       editName : function(name){
-        return current_user.save(name);
+        return this.current_user.save(name);
       }
     };
   });
 
   context('When creating a new user', function() {
     it('Should have an id', function() {
-      some_guy.should.have.property('user_id');
-      some_guy.user_id.should.be.ok();
-      some_guy.user_id.should.be.String();
+      user.should.have.property('user_id');
+      user.user_id.should.be.ok();
+      user.user_id.should.be.String();
     });
 
     it('Should have a name', function() {
-      some_guy.should.have.property('name');
-      some_guy.name.should.be.ok();
-      some_guy.name.should.be.String();
+      user.should.have.property('name');
+      user.name.should.be.ok();
+      user.name.should.be.String();
     });
 
     it('Shold have an email', function(){
-      some_guy.should.have.property('email_addr');
-      some_guy.email_addr.should.be.ok();
-      some_guy.email_addr.should.be.String();
+      user.should.have.property('email_addr');
+      user.email_addr.should.be.ok();
+      user.email_addr.should.be.String();
     });
 
     it('The name would be Facu, Robert, or Cesar.', function() {
-      some_guy.name.should.match(/^Facu$|^Robert$|^Cesar$/);
+      user.name.should.match(/^Facu$|^Robert$|^Cesar$/);
     });
 
     it('The email address should be from the expected domain', function(){
-      some_guy.email_addr.should.containEql("altoros.com");
-      some_guy.email_addr.should.match(/@altoros.com$/);
+      user.email_addr.should.containEql("altoros.com");
+      user.email_addr.should.match(/@altoros.com$/);
     });
   });
 
   context('When editing an user', function(){
 
     beforeEach(function(){
-      model['save'] = sandbox.stub();
-      model.save.withArgs(some_guy).returns(some_guy);
-      model.save.withArgs(sinon.match.any).throws("databaseError");
+      user['save'] = sandbox.stub();
+      user.save.withArgs(user).returns(user);
+      // model.save.withArgs(sinon.match.any).throws("databaseError");
     });
 
     it("and this is just for playing", function () {
+      console.log(user);
+      console.log(ctrl.editName("RUPERT"));
       // console.log(missionImpossible.assignment("accept", tape));
       // missionImpossible.assignment("reject", tape);
     });
