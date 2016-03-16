@@ -97,5 +97,13 @@ describe('Users', function() {
       edited_user.name.should.be.String();
       edited_user.name.should.be.eql(old_name);
     });
+
+    it("The new mail will be persisted", function () {
+      var new_mail = "facuuuu@altoros.com";
+      var edited_user = ctrl.editMail(new_mail);
+      edited_user.should.have.property('email_addr');
+      edited_user.email_addr.should.be.String();
+      edited_user.email_addr.should.be.eql(new_mail);
+    });
   });
 });
