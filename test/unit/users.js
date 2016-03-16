@@ -63,7 +63,6 @@ describe('Users', function() {
     beforeEach(function(){
       user['save'] = sandbox.stub();
       user.save.withArgs().returns(user);
-      // model.save.withArgs(sinon.match.any).throws("databaseError");
     });
 
     it("The new name will be persisted", function () {
@@ -72,6 +71,16 @@ describe('Users', function() {
       edited_user.should.have.property('name');
       edited_user.name.should.be.String();
       edited_user.name.should.be.eql(new_name);
+    });
+
+    it("On database error, catch and not persist", function () {
+      user.save.withArgs(sinon.match.any).throws("database_error");
+      var new_name = "RUPERT";
+      var current_name = ctrl.current_user.name;
+      var edited_user = ctrl.editName(new_name);
+      edited_user.should.have.property('name');
+      edited_user.name.should.be.String();
+      edited_user.name.should.be.eql(ctrl.current_user.name);
     });
   });
 });
