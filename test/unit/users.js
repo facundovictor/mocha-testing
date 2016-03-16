@@ -8,38 +8,49 @@ describe('Users', function() {
 
     ctrl = {
       current_user : user,
+      createUser : function(){
+        this.current_user = jsf(mocks.user);
+        return this.current_user;
+      },
       editName : function(name){
-        return this.current_user.save(name);
+        this.current_user.name = name;
+        return this.current_user.save();
       }
     };
   });
 
   context('When creating a new user', function() {
+ 
+    var new_user;
+    beforeEach(function(){
+      new_user = ctrl.createUser();
+    });
+
     it('Should have an id', function() {
-      user.should.have.property('user_id');
-      user.user_id.should.be.ok();
-      user.user_id.should.be.String();
+      new_user.should.have.property('user_id');
+      new_user.user_id.should.be.ok();
+      new_user.user_id.should.be.String();
     });
 
     it('Should have a name', function() {
-      user.should.have.property('name');
-      user.name.should.be.ok();
-      user.name.should.be.String();
+      new_user.should.have.property('name');
+      new_user.name.should.be.ok();
+      new_user.name.should.be.String();
     });
 
     it('Shold have an email', function(){
-      user.should.have.property('email_addr');
-      user.email_addr.should.be.ok();
-      user.email_addr.should.be.String();
+      new_user.should.have.property('email_addr');
+      new_user.email_addr.should.be.ok();
+      new_user.email_addr.should.be.String();
     });
 
     it('The name would be Facu, Robert, or Cesar.', function() {
-      user.name.should.match(/^Facu$|^Robert$|^Cesar$/);
+      new_user.name.should.match(/^Facu$|^Robert$|^Cesar$/);
     });
 
     it('The email address should be from the expected domain', function(){
-      user.email_addr.should.containEql("altoros.com");
-      user.email_addr.should.match(/@altoros.com$/);
+      new_user.email_addr.should.containEql("altoros.com");
+      new_user.email_addr.should.match(/@altoros.com$/);
     });
   });
 
@@ -47,15 +58,16 @@ describe('Users', function() {
 
     beforeEach(function(){
       user['save'] = sandbox.stub();
-      user.save.withArgs(user).returns(user);
+      user.save.withArgs().returns(user);
       // model.save.withArgs(sinon.match.any).throws("databaseError");
     });
 
-    it("and this is just for playing", function () {
-      console.log(user);
-      console.log(ctrl.editName("RUPERT"));
-      // console.log(missionImpossible.assignment("accept", tape));
-      // missionImpossible.assignment("reject", tape);
+    it("The new name will be persisted", function () {
+      var new_name = "RUPERT";
+      var edited_user = ctrl.editName(new_name);
+      edited_user.should.have.property('name');
+      edited_user.name.should.be.String();
+      edited_user.name.should.be.eql(new_name);
     });
   });
 });
