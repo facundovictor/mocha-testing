@@ -22,7 +22,13 @@ describe('Users', function() {
           this.current_user.name = old_name;
         }
         return this.current_user;
-      }
+      },
+      editMail : function(mail){
+        if (mail !== null && mail.match(/@altoros.com$/)){
+          this.current_user.email_addr = mail;
+          return this.current_user.save();
+        }
+        throw "Bad mail";
       }
     };
   });
