@@ -28,7 +28,7 @@ describe('Users', function() {
           this.current_user.email_addr = mail;
           return this.current_user.save();
         }
-        throw "Bad mail";
+        throw new Error("Wrong domain");
       }
     };
   });
@@ -83,27 +83,38 @@ describe('Users', function() {
     it("The new name will be persisted", function () {
       var new_name = "RUPERT";
       var edited_user = ctrl.editName(new_name);
-      edited_user.should.have.property('name');
-      edited_user.name.should.be.String();
-      edited_user.name.should.be.eql(new_name);
+      ctrl.current_user.should.have.property('name');
+      ctrl.current_user.name.should.be.String();
+      ctrl.current_user.name.should.be.eql(new_name);
     });
 
     it("On database error, catch and not persist", function () {
       user.save.withArgs().throws("database_error");
       var new_name = "RUPERT";
       var old_name = ctrl.current_user.name;
-      var edited_user = ctrl.editName(new_name);
-      edited_user.should.have.property('name');
-      edited_user.name.should.be.String();
-      edited_user.name.should.be.eql(old_name);
+      ctrl.editName(new_name);
+      ctrl.current_user.should.have.property('name');
+      ctrl.current_user.name.should.be.String();
+      ctrl.current_user.name.should.be.eql(old_name);
     });
 
     it("The new mail will be persisted", function () {
       var new_mail = "facuuuu@altoros.com";
-      var edited_user = ctrl.editMail(new_mail);
-      edited_user.should.have.property('email_addr');
-      edited_user.email_addr.should.be.String();
-      edited_user.email_addr.should.be.eql(new_mail);
+      ctrl.editMail(new_mail);
+      ctrl.current_user.should.have.property('email_addr');
+      ctrl.current_user.email_addr.should.be.String();
+      ctrl.current_user.email_addr.should.be.eql(new_mail);
+    });
+
+    it("An invalid new mail wont be persisted", function () {
+      var new_mail = "facundovt@gmail.com";
+      var current_mail = ctrl.current_user.email_addr;
+      (function(){
+        ctrl.editMail(new_mail);
+      }).should.throw("Wrong domain");
+      ctrl.current_user.should.have.property('email_addr');
+      ctrl.current_user.email_addr.should.be.String();
+      ctrl.current_user.email_addr.should.be.eql(current_mail);
     });
   });
 });
