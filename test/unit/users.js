@@ -19,6 +19,10 @@ describe('Users', function() {
     };
   });
 
+  afterEach(function(){
+    sandbox.restore();
+  });
+
   context('When creating a new user', function() {
  
     var new_user;
