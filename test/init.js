@@ -2,7 +2,6 @@ global.assert = require('assert');
 global.chai = require("chai");
 global.chaiAsPromised = require("chai-as-promised");
 global.jsf = require('json-schema-faker');
-// global.should = require('should');
 global.should = chai.should();
 global.expect = chai.expect;
 global.sinon = require('sinon');
