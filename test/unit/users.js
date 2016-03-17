@@ -6,6 +6,7 @@ describe('Users', function() {
     sandbox = sinon.sandbox.create();
     user = jsf(mocks.user);
 
+    // This is just a user controller only for learning purposes.
     ctrl = {
       current_user : user,
       createUser : function(){
@@ -46,20 +47,26 @@ describe('Users', function() {
 
     it('Should have an id', function() {
       new_user.should.have.property('user_id');
-      new_user.user_id.should.be.ok();
-      new_user.user_id.should.be.String();
+      // new_user.user_id.should.be.ok();
+      // new_user.user_id.should.be.String();
+      expect(new_user.user_id).to.be.ok;
+      new_user.user_id.should.be.a('string');
     });
 
     it('Should have a name', function() {
       new_user.should.have.property('name');
-      new_user.name.should.be.ok();
-      new_user.name.should.be.String();
+      // new_user.name.should.be.ok();
+      // new_user.name.should.be.String();
+      expect(new_user.name).to.be.ok;
+      new_user.name.should.be.a('string');
     });
 
     it('Shold have an email', function(){
       new_user.should.have.property('email_addr');
-      new_user.email_addr.should.be.ok();
-      new_user.email_addr.should.be.String();
+      // new_user.email_addr.should.be.ok();
+      // new_user.email_addr.should.be.String();
+      expect(new_user.email_addr).to.be.ok;
+      new_user.email_addr.should.be.a('string');
     });
 
     it('The name would be Facu, Robert, or Cesar.', function() {
@@ -67,8 +74,10 @@ describe('Users', function() {
     });
 
     it('The email address should be from the expected domain', function(){
-      new_user.email_addr.should.containEql("altoros.com");
-      new_user.email_addr.should.match(/@altoros.com$/);
+      // new_user.email_addr.should.containEql("altoros.com");
+      // new_user.email_addr.should.match(/@altoros.com$/);
+      expect(new_user.email_addr).to.include("altoros.com");
+      expect(new_user.email_addr).to.match(/@altoros.com$/);
     });
   });
 
@@ -84,7 +93,8 @@ describe('Users', function() {
       var new_name = "RUPERT";
       var edited_user = ctrl.editName(new_name);
       ctrl.current_user.should.have.property('name');
-      ctrl.current_user.name.should.be.String();
+      // ctrl.current_user.name.should.be.String();
+      ctrl.current_user.email_addr.should.be.a('string');
       ctrl.current_user.name.should.be.eql(new_name);
     });
 
@@ -94,7 +104,8 @@ describe('Users', function() {
       var old_name = ctrl.current_user.name;
       ctrl.editName(new_name);
       ctrl.current_user.should.have.property('name');
-      ctrl.current_user.name.should.be.String();
+      // ctrl.current_user.name.should.be.String();
+      ctrl.current_user.name.should.be.a('string');
       ctrl.current_user.name.should.be.eql(old_name);
     });
 
@@ -102,7 +113,8 @@ describe('Users', function() {
       var new_mail = "facuuuu@altoros.com";
       ctrl.editMail(new_mail);
       ctrl.current_user.should.have.property('email_addr');
-      ctrl.current_user.email_addr.should.be.String();
+      // ctrl.current_user.email_addr.should.be.String();
+      ctrl.current_user.email_addr.should.be.a('string');
       ctrl.current_user.email_addr.should.be.eql(new_mail);
     });
 
@@ -113,7 +125,8 @@ describe('Users', function() {
         ctrl.editMail(new_mail);
       }).should.throw("Wrong domain");
       ctrl.current_user.should.have.property('email_addr');
-      ctrl.current_user.email_addr.should.be.String();
+      // ctrl.current_user.email_addr.should.be.String();
+      ctrl.current_user.email_addr.should.be.a('string');
       ctrl.current_user.email_addr.should.be.eql(current_mail);
     });
   });
