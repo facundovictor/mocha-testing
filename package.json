@@ -25,6 +25,7 @@
   },
   "homepage": "https://github.com/facundovictor/mocha-testing#readme",
   "devDependencies": {
+    "bluebird": "^3.3.4",
     "chai": "^3.4.1",
     "chai-as-promised": "^5.1.0",
     "json-schema-faker": "^0.2.11",
