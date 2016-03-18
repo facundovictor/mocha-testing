@@ -30,6 +30,9 @@ describe('Users', function() {
           return this.current_user.save();
         }
         throw new Error("Wrong domain");
+      },
+      getBestFriend : function(){
+        return promise.resolve(jsf(mocks.user));
       }
     };
   });
