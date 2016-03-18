@@ -60,7 +60,7 @@ describe('Users', function() {
       new_user.name.should.be.a('string');
     });
 
-    it('Shold have an email', function(){
+    it('Shold have an email', function() {
       new_user.should.have.property('email_addr');
       expect(new_user.email_addr).to.be.ok;
       new_user.email_addr.should.be.a('string');
@@ -70,13 +70,13 @@ describe('Users', function() {
       new_user.name.should.match(/^Facu$|^Robert$|^Cesar$/);
     });
 
-    it('The email address should be from the expected domain', function(){
+    it('The email address should be from the expected domain', function() {
       expect(new_user.email_addr).to.include("altoros.com");
       expect(new_user.email_addr).to.match(/@altoros.com$/);
     });
   });
 
-  context('When editing an user', function(){
+  context('When editing an user', function() {
 
     beforeEach(function(){
       user['save'] = sandbox.stub();
@@ -118,6 +118,13 @@ describe('Users', function() {
       ctrl.current_user.should.have.property('email_addr');
       ctrl.current_user.email_addr.should.be.a('string');
       ctrl.current_user.email_addr.should.be.eql(current_mail);
+    });
+  });
+  context('When getting an user', function() {
+    it(", on getting his best friend user", function() {
+      friend_promise = ctrl.getBestFriend();
+      friend_promise.should.be.fulfilled;
+      expect(friend_promise).to.eventually.have.property("name");
     });
   });
 });
