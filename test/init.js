@@ -1,3 +1,4 @@
+global.promise = require('bluebird');
 global.assert = require('assert');
 global.chai = require("chai");
 global.chaiAsPromised = require("chai-as-promised");
