@@ -125,6 +125,8 @@ describe('Users', function() {
       friend_promise = ctrl.getBestFriend();
       friend_promise.should.be.fulfilled;
       expect(friend_promise).to.eventually.have.property("name");
+      expect(friend_promise).to.eventually.have.property("user_id");
+      expect(friend_promise).to.eventually.have.property("email_addr");
     });
   });
 });
