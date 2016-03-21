@@ -143,6 +143,7 @@ describe('Users', function() {
     context(", An error occurs", function() {
 
       beforeEach(function(){
+        user.getBestFriend.withArgs().returns(promise.resolve(new Error('Database Error')));
       });
 
       it(", on getting his best friend user, but it fails", function() {
