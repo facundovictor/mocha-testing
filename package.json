@@ -28,7 +28,6 @@
     "bluebird": "^3.3.4",
     "chai": "^3.4.1",
     "chai-as-promised": "^5.1.0",
-    "jquery": "^2.2.2",
     "json-schema-faker": "^0.2.11",
     "lodash": "^4.6.1",
     "mocha": "^2.3.4",

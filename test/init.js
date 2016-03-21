@@ -1,4 +1,4 @@
-global.$ = require('jquery');
+global.request = require('request');
 global.promise = require('bluebird');
 global.assert = require('assert');
 global.jsf = require('json-schema-faker');
