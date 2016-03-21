@@ -6,6 +6,18 @@ describe('Users', function() {
     sandbox = sinon.sandbox.create();
     user = jsf(mocks.user);
 
+    user['getAPIInformation'] = function(token, cb_success, cb_error) {
+      var request = $.ajax({
+        method : 'POST',
+        url    : 'https://some-api.com',
+        cache  : false,
+        data   : { token: token }
+      });
+
+      request.done(cb_success);
+      request.fail(cb_error);
+    };
+
     // This is just a user controller only for learning purposes.
     ctrl = {
       current_user : user,
@@ -33,6 +45,10 @@ describe('Users', function() {
       },
       getBestFriend : function(){
         return this.current_user.getBestFriend();
+      },
+      getAPIInformation : function(token, callback){
+        /* The next function is for testing asynchronous code */
+        return this.current_user.getAPIInformation(token, onSuccess, onError);
       }
     };
   });
