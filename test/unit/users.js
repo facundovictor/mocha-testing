@@ -128,8 +128,11 @@ describe('Users', function() {
       expect(friend_promise).to.eventually.have.property("name")
                             .and.be.a('string')
                             .that.match(/^Facu$|^Robert$|^Cesar$/);
-      expect(friend_promise).to.eventually.have.property("user_id").and.be.a('string');
-      expect(friend_promise).to.eventually.have.property("email_addr").and.be.a('string');
+      expect(friend_promise).to.eventually.have.property("user_id")
+                            .and.be.a('string');
+      expect(friend_promise).to.eventually.have.property("email_addr")
+                            .and.be.a('string')
+                            .that.match(/@altoros.com$/);
     });
   });
 });
