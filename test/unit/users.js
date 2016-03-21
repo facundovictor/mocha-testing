@@ -120,11 +120,14 @@ describe('Users', function() {
       ctrl.current_user.email_addr.should.be.eql(current_mail);
     });
   });
+
   context('When getting an user', function() {
     it(", on getting his best friend user", function() {
       friend_promise = ctrl.getBestFriend();
       friend_promise.should.be.fulfilled;
-      expect(friend_promise).to.eventually.have.property("name").and.be.a('string');
+      expect(friend_promise).to.eventually.have.property("name")
+                            .and.be.a('string')
+                            .that.match(/^Facu$|^Robert$|^Cesar$/);
       expect(friend_promise).to.eventually.have.property("user_id").and.be.a('string');
       expect(friend_promise).to.eventually.have.property("email_addr").and.be.a('string');
     });
