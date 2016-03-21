@@ -32,7 +32,7 @@ describe('Users', function() {
         throw new Error("Wrong domain");
       },
       getBestFriend : function(){
-        return promise.resolve(jsf(mocks.user));
+        return this.current_user.getBestFriend();
       }
     };
   });
@@ -122,6 +122,11 @@ describe('Users', function() {
   });
 
   context('When getting an user', function() {
+    beforeEach(function(){
+      user['getBestFriend'] = sandbox.stub();
+      user.getBestFriend.withArgs().returns(promise.resolve(jsf(mocks.user)));
+    });
+
     it(", on getting his best friend user", function() {
       friend_promise = ctrl.getBestFriend();
       friend_promise.should.be.fulfilled;
