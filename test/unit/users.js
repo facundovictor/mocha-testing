@@ -151,6 +151,7 @@ describe('Users', function() {
         friend_promise.should.be.fulfilled;
         expect(friend_promise).to.eventually.be.an.instanceof(Error)
                               .and.have.property('message','Database Error');
+        expect(friend_promise).to.eventually.have.property('stack');
       });
     });
   });
