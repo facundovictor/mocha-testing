@@ -7,15 +7,17 @@ describe('Users', function() {
     user = jsf(mocks.user);
 
     user['getAPIInformation'] = function(token, cb_success, cb_error) {
-      var request = $.ajax({
-        method : 'POST',
-        url    : 'https://some-api.com',
-        cache  : false,
-        data   : { token: token }
+      var request = request({
+        method : 'GET',
+        uri    : 'https://some-api.com',
+        auth   : { token: token }
+      }, function(error, response, body) {
+        if (!error) {
+          cb_success(response, body);
+        } else {
+          cb_error(respone, body);
+        }
       });
-
-      request.done(cb_success);
-      request.fail(cb_error);
     };
 
     // This is just a user controller only for learning purposes.
