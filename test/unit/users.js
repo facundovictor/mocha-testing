@@ -124,9 +124,9 @@ describe('Users', function() {
     it(", on getting his best friend user", function() {
       friend_promise = ctrl.getBestFriend();
       friend_promise.should.be.fulfilled;
-      expect(friend_promise).to.eventually.have.property("name");
-      expect(friend_promise).to.eventually.have.property("user_id");
-      expect(friend_promise).to.eventually.have.property("email_addr");
+      expect(friend_promise).to.eventually.have.property("name").and.be.a('string');
+      expect(friend_promise).to.eventually.have.property("user_id").and.be.a('string');
+      expect(friend_promise).to.eventually.have.property("email_addr").and.be.a('string');
     });
   });
 });
