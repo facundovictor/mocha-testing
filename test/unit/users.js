@@ -139,5 +139,15 @@ describe('Users', function() {
                             .and.be.a('string')
                             .that.match(/@altoros.com$/);
     });
+
+    context(", An error occurs", function() {
+
+      beforeEach(function(){
+      });
+
+      it(", on getting his best friend user, but it fails", function() {
+
+      });
+    });
   });
 });
