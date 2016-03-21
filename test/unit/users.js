@@ -147,7 +147,10 @@ describe('Users', function() {
       });
 
       it(", on getting his best friend user, but it fails", function() {
-
+        friend_promise = ctrl.getBestFriend();
+        friend_promise.should.be.fulfilled;
+        expect(friend_promise).to.eventually.be.an.instanceof(Error)
+                              .and.have.property('message','Database Error');
       });
     });
   });
