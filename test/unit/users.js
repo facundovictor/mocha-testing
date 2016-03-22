@@ -10,6 +10,12 @@ describe('Users', function() {
     user['getAPIInformation'] = function(callback) {
       callback(1,2,3);
     };
+    user['saveAPIInformation'] = function(info) {
+      /* Let's suppose that we save some data */
+      return {
+        response: 200
+      };
+    };
 
     // This is just a user controller only for learning purposes.
     ctrl = {
@@ -42,6 +48,11 @@ describe('Users', function() {
       getAPIInformation : function(callback){
         /* The next function is for testing asynchronous code */
         this.current_user.getAPIInformation(callback);
+      },
+      saveNewData : function(new_data, callback){
+        setTimeout(function(){
+          callback(ctrl.current_user.saveAPIInformation(new_data));
+        }, 300);
       }
     };
   });
