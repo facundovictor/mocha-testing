@@ -208,6 +208,19 @@ describe('Users', function() {
           response: 404
         });
       });
+
+      it("The script get recovered", function(done) {
+        ctrl.saveNewData({
+          arg_1 : 1,
+          arg_2 : 2
+        },function(status) {
+          status.should.be.an('object');
+          status.should.have.property('response');
+          status.response.should.be.a('number');
+          status.response.should.be.equal(404);
+          done();
+        });
+      });
     });
   });
 });
