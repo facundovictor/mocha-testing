@@ -4,20 +4,11 @@ describe('Users', function() {
 
   beforeEach(function(){
     sandbox = sinon.sandbox.create();
+
     user = jsf(mocks.user);
 
-    user['getAPIInformation'] = function(token, cb_success, cb_error) {
-      var request = request({
-        method : 'GET',
-        uri    : 'https://some-api.com',
-        auth   : { token: token }
-      }, function(error, response, body) {
-        if (!error) {
-          cb_success(response, body);
-        } else {
-          cb_error(respone, body);
-        }
-      });
+    user['getAPIInformation'] = function(callback) {
+      callback(1,2,3);
     };
 
     // This is just a user controller only for learning purposes.
@@ -48,9 +39,9 @@ describe('Users', function() {
       getBestFriend : function(){
         return this.current_user.getBestFriend();
       },
-      getAPIInformation : function(token, callback){
+      getAPIInformation : function(callback){
         /* The next function is for testing asynchronous code */
-        return this.current_user.getAPIInformation(token, onSuccess, onError);
+        this.current_user.getAPIInformation(callback);
       }
     };
   });
@@ -171,6 +162,19 @@ describe('Users', function() {
                               .and.have.property('message','Database Error');
         expect(friend_promise).to.eventually.have.property('stack');
       });
+    });
+
+  });
+  
+  context("When interacting with an external API", function() {
+
+    it(", on success", function() {
+      callback = sandbox.spy()
+      ctrl.getAPIInformation(callback);
+
+      callback.called;
+      callback.calledOnce;
+      callback.calledWith(1,2,3);
     });
   });
 });
