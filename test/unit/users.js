@@ -187,5 +187,18 @@ describe('Users', function() {
       callback.calledOnce;
       callback.calledWith(1,2,3);
     });
+
+    it(", on save data to API", function(done){
+      ctrl.saveNewData({
+        arg_1 : 1,
+        arg_2 : 2
+      },function(status) {
+        status.should.be.an('object');
+        status.should.have.property('response');
+        status.response.should.be.a('number');
+        status.response.should.be.equal(200);
+        done();
+      });
+    });
   });
 });
