@@ -188,7 +188,7 @@ describe('Users', function() {
       callback.calledWith(1,2,3);
     });
 
-    it(", on save data to API", function(done){
+    it(", on save data to API", function(done) {
       ctrl.saveNewData({
         arg_1 : 1,
         arg_2 : 2
@@ -203,6 +203,7 @@ describe('Users', function() {
 
     context(", An error occurs", function() {
       beforeEach(function(){
+        user['saveAPIInformation'] = sandbox.stub();
         user.saveAPIInformation.withArgs().returns({
           response: 404
         });
