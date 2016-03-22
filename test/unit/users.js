@@ -200,5 +200,13 @@ describe('Users', function() {
         done();
       });
     });
+
+    context(", An error occurs", function() {
+      beforeEach(function(){
+        user.saveAPIInformation.withArgs().returns({
+          response: 404
+        });
+      });
+    });
   });
 });
