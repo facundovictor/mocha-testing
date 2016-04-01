@@ -7,6 +7,7 @@ describe('Users', function() {
 
     user = jsf(mocks.user);
 
+    // Let's suppose that we have these tow functions in the "model".
     user['getAPIInformation'] = function(callback) {
       callback(1,2,3);
     };
@@ -16,45 +17,9 @@ describe('Users', function() {
         response: 200
       };
     };
+    // --------------------------------------------------------------
 
-    // This is just a user controller only for learning purposes.
-    ctrl = {
-      current_user : user,
-      createUser : function(){
-        this.current_user = jsf(mocks.user);
-        return this.current_user;
-      },
-      editName : function(name){
-        var old_name = this.current_user.name;
-        try {
-          this.current_user.name = name;
-          return this.current_user.save();
-        }
-        catch (e) {
-          this.current_user.name = old_name;
-        }
-        return this.current_user;
-      },
-      editMail : function(mail){
-        if (mail !== null && mail.match(/@altoros.com$/)){
-          this.current_user.email_addr = mail;
-          return this.current_user.save();
-        }
-        throw new Error("Wrong domain");
-      },
-      getBestFriend : function(){
-        return this.current_user.getBestFriend();
-      },
-      getAPIInformation : function(callback){
-        /* The next function is for testing asynchronous code */
-        this.current_user.getAPIInformation(callback);
-      },
-      saveNewData : function(new_data, callback){
-        setTimeout(function(){
-          callback(ctrl.current_user.saveAPIInformation(new_data));
-        }, 300);
-      }
-    };
+    ctrl = new controllers.userCtrl(user);
   });
 
   afterEach(function(){
@@ -65,7 +30,7 @@ describe('Users', function() {
  
     var new_user;
     beforeEach(function(){
-      new_user = ctrl.createUser();
+      new_user = ctrl.current_user; 
     });
 
     it('Should have an id', function() {
