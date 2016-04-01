@@ -1,6 +1,8 @@
 # mocha-testing
 A repository for testing MochaJS, chai and chai-as-promises.
 
+[![Coverage Status](https://coveralls.io/repos/github/facundovictor/mocha-testing/badge.svg?branch=master)](https://coveralls.io/github/facundovictor/mocha-testing?branch=master)
+
 ## Deploy
 
 1- git clone git@github.com:facundovictor/mocha-testing.git
