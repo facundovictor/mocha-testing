@@ -11,6 +11,9 @@ global.expect = chai.expect;
 global.should = chai.should();
 global._ = require('lodash');
 
+// Load controllers
+global.controllers = require('./../controllers');
+
 // Load schemas
 global.mocks = require('./mocks');
 
