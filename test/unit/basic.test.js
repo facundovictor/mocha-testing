@@ -1,15 +1,3 @@
-var sinon = require('sinon');
-var chai = require("chai");
-var chaiAsPromised = require("chai-as-promised");
-chai.use(chaiAsPromised);
-var expect = require('chai').expect;
-var jsf = require('json-schema-faker');
-var mocks = require('../mocks');
-var controllers = require('../../controllers');
-var should = chai.should();
-var promise = require('bluebird');
-var assert = chai.assert;
-
 function add() {
 	return Array.prototype.slice.call(arguments).reduce(function(prev, curr) {
 		return prev + curr;
