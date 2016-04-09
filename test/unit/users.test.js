@@ -7,11 +7,11 @@ describe('Users', function() {
 
     user = jsf(mocks.user);
 
-    // Let's suppose that we have these tow functions in the "model".
-    user['getAPIInformation'] = function(callback) {
+    // Let's suppose that we have these two functions in the "model".
+    user.getAPIInformation = function(callback) {
       callback(1,2,3);
     };
-    user['saveAPIInformation'] = function(info) {
+    user.saveAPIInformation = function(info) {
       /* Let's suppose that we save some data */
       return {
         response: 200
@@ -64,7 +64,7 @@ describe('Users', function() {
   context('When editing an user', function() {
 
     beforeEach(function(){
-      user['save'] = sandbox.stub();
+      user.save = sandbox.stub();
       user.save.withArgs().returns(user);
     });
 
@@ -108,7 +108,7 @@ describe('Users', function() {
 
   context('When getting an user', function() {
     beforeEach(function(){
-      user['getBestFriend'] = sandbox.stub();
+      user.getBestFriend = sandbox.stub();
       user.getBestFriend.withArgs().returns(promise.resolve(jsf(mocks.user)));
     });
 
@@ -168,7 +168,7 @@ describe('Users', function() {
 
     context(", An error occurs", function() {
       beforeEach(function(){
-        user['saveAPIInformation'] = sandbox.stub();
+        user.saveAPIInformation = sandbox.stub();
         user.saveAPIInformation.withArgs().returns({
           response: 404
         });
