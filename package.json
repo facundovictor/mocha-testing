@@ -7,7 +7,9 @@
     "test": "test"
   },
   "scripts": {
-    "test": "mocha"
+    "test": "./node_modules/mocha/bin/mocha ./test/**/*.test.js",
+		"coverage": "./node_modules/.bin/istanbul cover ./node_modules/mocha/bin/_mocha ./test/**/*.test.js",
+		"mocha": "./node_modules/mocha/bin/mocha"
   },
   "repository": {
     "type": "git",
