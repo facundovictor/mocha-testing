@@ -29,7 +29,7 @@
   "devDependencies": {
     "bluebird": "^3.4.0",
     "chai": "^3.5.0",
-    "chai-as-promised": "^5.3.0",
+    "chai-as-promised": "^6.0.0",
     "coveralls": "~2",
     "istanbul": "~0",
     "json-schema-faker": "^0.3.2",
